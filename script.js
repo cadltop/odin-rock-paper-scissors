@@ -20,3 +20,23 @@ function getComputerChoice() {
 
     return selection;
 }
+
+function getPlayerChoice() {
+    let selection, 
+    newPrompt = (prompt("Type your choice:\n- Rock\n- Paper\n-Scissors", "")),
+    userChoice = newPrompt.toLowerCase();
+
+    switch (userChoice) {
+        case "rock":
+            selection = ROCK;
+            break;
+        case "paper":
+            selection = PAPER;
+            break;
+        case "scissors":
+            selection = SCISSORS;
+            break;
+    }
+
+    return selection;
+}

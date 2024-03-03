@@ -37,15 +37,18 @@ function getPlayerChoice() {
     return selection;
 }
 
-function playRound(getComputerChoice, getPlayerChoice) {
+const computerSelection = getComputerChoice();
+const playerSelection = getPlayerChoice();
+
+function playRound(computerSelection, playerSelection) {
     let result;
 
-    if (getComputerChoice() !== getPlayerChoice()){
-        switch (getComputerChoice, getPlayerChoice) {
+    if (computerSelection !== playerSelection){
+        switch (computerSelection, playerSelection) {
             case ("Rock", "Paper" || "Paper", "Rock"):
                 result = "Paper beats Rock";
 
-                if (getPlayerChoice() == "Paper") {
+                if (playerSelection == "Paper") {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;
@@ -54,7 +57,7 @@ function playRound(getComputerChoice, getPlayerChoice) {
             case ("Scissors", "Paper" || "Paper", "Scissors"):
                 result = "Scissors beats Paper"
 
-                if (getPlayerChoice() == "Scissors") {
+                if (playerSelection == "Scissors") {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;
@@ -63,7 +66,7 @@ function playRound(getComputerChoice, getPlayerChoice) {
             case ("Rock", "Scissors" || "Scissors", "Rock"):
                 result = "Rock beats Scissors";
 
-                if (getPlayerChoice() == "Rock") {
+                if (playerSelection == "Rock") {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;

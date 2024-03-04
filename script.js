@@ -1,36 +1,24 @@
 function getComputerChoice() {
     let selection, 
     randomNumber = Math.round(Math.random() * 3 + 1);
-
-    switch (randomNumber) {
-        case 1:
-            selection = "Rock";
-            break;
-        case 2:
-            selection = "Paper";
-            break;
-        case 3:
-            selection = "Scissors";
-            break;
-    }
-
-    return selection;
+    
+    return randomNumber;
 }
 
 function getPlayerChoice() {
     let selection, 
     newPrompt = (prompt("Type your choice:\n- Rock\n- Paper\n-Scissors", "")),
-    userChoice = newPrompt.toLowerCase();
+    userInput = newPrompt.toLowerCase();
 
-    switch (userChoice) {
+    switch (userInput) {
         case "rock":
-            selection = "Rock";
+            selection = 1;
             break;
         case "paper":
-            selection = "Paper";
+            selection = 2;
             break;
         case "scissors":
-            selection = "Scissors";
+            selection = 3;
             break;
     }
 
@@ -39,43 +27,45 @@ function getPlayerChoice() {
 
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice();
-
+console.log(computerSelection,playerSelection);
 function playRound(computerSelection, playerSelection) {
     let result;
 
-    if (computerSelection !== playerSelection){
+    if (computerSelection !== playerSelection) {
         switch (computerSelection, playerSelection) {
-            case ("Rock", "Paper" || "Paper", "Rock"):
+            case ((1, 2) || (2, 1)):
                 result = "Paper beats Rock";
 
-                if (playerSelection == "Paper") {
+                if (playerSelection === 2) {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;
                 }
                 break;
-            case ("Scissors", "Paper" || "Paper", "Scissors"):
+            case ((2, 3) || (3, 2)):
                 result = "Scissors beats Paper"
 
-                if (playerSelection == "Scissors") {
+                if (playerSelection === 3) {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;
                 }
                 break;
-            case ("Rock", "Scissors" || "Scissors", "Rock"):
+            case ((3, 1) || (1, 3)):
                 result = "Rock beats Scissors";
 
-                if (playerSelection == "Rock") {
+                if (playerSelection === 1) {
                     result = "You Win! " + result;
                 } else {
                     result = "You Lose! " + result;
                 }
                 break;
-        }    
-    } else {
-        result = alert("It's a tie!");
-    }   
+        }
 
-    return result;
+        return result;    
+    } else {
+        alert("It's a tie!");
+    }   
 }
+
+console.log(playRound(computerSelection, playerSelection));

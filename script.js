@@ -71,19 +71,20 @@ function playGame() {
     const paperBtn = document.querySelector('.paper-btn');
     const scissorsBtn = document.querySelector('.scissors-btn');
 
-    const computerSelection = Math.round(Math.random() * 3 + 1);
-
-    rockBtn.addEventListener('click', (computerSelection) => {
+    rockBtn.addEventListener('click', () => {
+        const computerSelection = Math.round(Math.random() * 3 + 1);
         const playerSelection = 1;
         playRound(computerSelection, playerSelection);
     });
 
-    paperBtn.addEventListener('click', (computerSelection) => {
+    paperBtn.addEventListener('click', () => {
+        const computerSelection = Math.round(Math.random() * 3 + 1);
         const playerSelection = 2;
         playRound(computerSelection, playerSelection);
     });
 
-    scissorsBtn.addEventListener('click', (computerSelection) => {
+    scissorsBtn.addEventListener('click', () => {
+        const computerSelection = Math.round(Math.random() * 3 + 1);
         const playerSelection = 3;
         playRound(computerSelection, playerSelection);
     });

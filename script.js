@@ -3,42 +3,66 @@ function playGame() {
     function displayResult(computerSelection, playerSelection) {
         const resultsDiv = document.querySelector('.results');
         const playerDiv = document.createElement('div');
+        playerDiv.classList.add('player');
         const computerDiv = document.createElement('div');
+        computerDiv.classList.add('computer');
 
-        switch (computerSelection) {
-            case 1:
-                playerDiv.textContent = 'Rock';
-                break;
-            case 2:
-                playerDiv.textContent = 'Paper';
-                break;
-            case 3:
-                playerDiv.textContent = 'Scissors';
-                break;
+        if (document.querySelector('.results-txt').nextElementSibling === null) {
+            switch (playerSelection) {
+                case 1:
+                    playerDiv.textContent = 'Rock';
+                    break;
+                case 2:
+                    playerDiv.textContent = 'Paper';
+                    break;
+                case 3:
+                    playerDiv.textContent = 'Scissors';
+                    break;
+            }
+    
+            switch (computerSelection) {
+                case 1:
+                    computerDiv.textContent = 'Rock';
+                    break;
+                case 2:
+                    computerDiv.textContent = 'Paper';
+                    break;
+                case 3:
+                    computerDiv.textContent = 'Scissors';
+                    break;
+            }
+            
+            resultsDiv.appendChild(playerDiv);
+            resultsDiv.appendChild(computerDiv);
+        } else {
+            switch (playerSelection) {
+                case 1:
+                    document.querySelector('.player').innerHTML = 'Rock';
+                    break;
+                case 2:
+                    document.querySelector('.player').innerHTML = 'Paper';
+                    break;
+                case 3:
+                    document.querySelector('.player').innerHTML = 'Scissors';
+                    break;
+            }
+    
+            switch (computerSelection) {
+                case 1:
+                    document.querySelector('.computer').innerHTML = 'Rock';
+                    break;
+                case 2:
+                    document.querySelector('.computer').innerHTML = 'Paper';
+                    break;
+                case 3:
+                    document.querySelector('.computer').innerHTML = 'Scissors';
+                    break;
+            }
         }
-
-        switch (playerSelection) {
-            case 1:
-                computerDiv.textContent = 'Rock';
-                break;
-            case 2:
-                computerDiv.textContent = 'Paper';
-                break;
-            case 3:
-                computerDiv.textContent = 'Scissors';
-                break;
-        }
-
-        resultsDiv.appendChild(playerDiv);
-        resultsDiv.appendChild(computerDiv);
     }
     
     function playRound(computerSelection, playerSelection) {
         let result = null;
-        const resultsDiv = document.querySelector('.results');
-        const messageResult = document.createElement('p');
-
-        messageResult.classList.add('message');
 
         if (computerSelection !== playerSelection) {
             switch (computerSelection, playerSelection) {
@@ -50,7 +74,7 @@ function playGame() {
                     } else {
                         result = "You Lose! " + result;
                     }
-                    messageResult.textContent = result;
+
                     displayResult(computerSelection, playerSelection);
                     break;
                 case ((2, 3) || (3, 2)):
@@ -61,7 +85,7 @@ function playGame() {
                     } else {
                         result = "You Lose! " + result;
                     }
-                    messageResult.textContent = result;
+                    
                     displayResult(computerSelection, playerSelection);
                     break;
                 case ((3, 1) || (1, 3)):
@@ -72,15 +96,14 @@ function playGame() {
                     } else {
                         result = "You Lose! " + result;
                     }
-                    messageResult.textContent = result;
+                    
                     displayResult(computerSelection, playerSelection);
                     break;
             }
         } else {
-            messageResult.textContent = "It's a tie!"
             displayResult(computerSelection, playerSelection);
         }
-        resultsDiv.appendChild(messageResult);
+
     }
 
     const rockBtn = document.querySelector('.rock-btn');

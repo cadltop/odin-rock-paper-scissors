@@ -1,33 +1,4 @@
 function playGame() {
-    function getComputerChoice() {
-        let selection = null, 
-        randomNumber = Math.round(Math.random() * 3 + 1);
-        
-        return randomNumber;
-    }
-    
-    function getPlayerChoice() {
-        let selection = null, 
-        newPrompt = (prompt("Type your choice:\n- Rock\n- Paper\n-Scissors", "")),
-        userInput = newPrompt.toLowerCase();
-    
-        switch (userInput) {
-            case "rock":
-                selection = 1;
-                break;
-            case "paper":
-                selection = 2;
-                break;
-            case "scissors":
-                selection = 3;
-                break;
-        }
-    
-        return selection;
-    }
-    
-    const computerSelection = getComputerChoice();
-    const playerSelection = getPlayerChoice();
 
     function displayResult(computerSelection, playerSelection) {
         switch (computerSelection) {
@@ -54,11 +25,10 @@ function playGame() {
                 break;
         }
     }
-
-    displayResult(computerSelection, playerSelection);
     
     function playRound(computerSelection, playerSelection) {
         let result = null;
+        displayResult(computerSelection, playerSelection);
     
         if (computerSelection !== playerSelection) {
             switch (computerSelection, playerSelection) {
@@ -97,24 +67,24 @@ function playGame() {
         }   
     }
 
-    playRound(computerSelection, playerSelection);
-
     const rockBtn = document.querySelector('.rock-btn');
     const paperBtn = document.querySelector('.paper-btn');
-    const scissorsBtn = document.querySelector('.scissor-btn');
+    const scissorsBtn = document.querySelector('.scissors-btn');
 
-    rockBtn.addEventListener('click', (computerSelection, playerSelection) => {
-        playerSelection = 1;
+    const computerSelection = Math.round(Math.random() * 3 + 1);
+
+    rockBtn.addEventListener('click', (computerSelection) => {
+        const playerSelection = 1;
         playRound(computerSelection, playerSelection);
     });
 
-    paperBtn.addEventListener('click', (computerSelection, playerSelection) => {
-        playerSelection = 2;
+    paperBtn.addEventListener('click', (computerSelection) => {
+        const playerSelection = 2;
         playRound(computerSelection, playerSelection);
     });
 
-    scissorsBtn.addEventListener('click', (computerSelection, playerSelection) => {
-        playerSelection = 3;
+    scissorsBtn.addEventListener('click', (computerSelection) => {
+        const playerSelection = 3;
         playRound(computerSelection, playerSelection);
     });
 

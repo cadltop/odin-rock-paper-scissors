@@ -97,7 +97,27 @@ function playGame() {
         }   
     }
 
-    playRound(computerSelection, playerSelection);   
+    playRound(computerSelection, playerSelection);
+
+    const rockBtn = document.querySelector('.rock-btn');
+    const paperBtn = document.querySelector('.paper-btn');
+    const scissorsBtn = document.querySelector('.scissor-btn');
+
+    rockBtn.addEventListener('click', (computerSelection, playerSelection) => {
+        playerSelection = 1;
+        playRound(computerSelection, playerSelection);
+    });
+
+    paperBtn.addEventListener('click', (computerSelection, playerSelection) => {
+        playerSelection = 2;
+        playRound(computerSelection, playerSelection);
+    });
+
+    scissorsBtn.addEventListener('click', (computerSelection, playerSelection) => {
+        playerSelection = 3;
+        playRound(computerSelection, playerSelection);
+    });
+
 }
 
 playGame();

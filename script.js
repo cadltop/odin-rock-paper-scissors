@@ -104,6 +104,23 @@ function playGame() {
         
             document.querySelector('.computer-s').innerHTML = computerCounter.toString();
             document.querySelector('.player-s').innerHTML = playerCounter.toString();
+            const messageP = document.querySelector('.message');
+
+            messageP.textContent = '';
+            
+            if (playerCounter === 5) {
+                document.querySelector('.message').innerHTML = 'You Won!';
+                playerCounter = 0; computerCounter = 0;
+            }
+            if (computerCounter === 5) {
+                document.querySelector('.message').innerHTML = 'You Loss!';
+                playerCounter = 0; computerCounter = 0;
+            }
+            if (playerCounter === 5 && computerCounter == 5) {
+                document.querySelector('.message').innerHTML = "It's a tie!";
+                playerCounter = 0; computerCounter = 0;
+            }
+            
         }
     }
     

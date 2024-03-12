@@ -126,7 +126,6 @@ function playGame() {
     
 
     function playRound(computerSelection, playerSelection) {
-        console.log(computerSelection,playerSelection);
         displayResult(computerSelection, playerSelection);
 
         if (computerSelection !== playerSelection) {

@@ -129,8 +129,6 @@ function playGame() {
         displayResult(computerSelection, playerSelection);
 
         if (computerSelection !== playerSelection) {
-            console.log(playerSelection);
-            console.log(computerSelection);
             switch (computerSelection, playerSelection) {
                 case ((1, 2) || (2, 1)):
                     if (playerSelection === 2) {

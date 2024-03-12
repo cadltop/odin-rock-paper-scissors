@@ -33,8 +33,8 @@ function playGame() {
                     break;
             }
             
-            resultsDiv.appendChild(playerDiv);
             resultsDiv.appendChild(computerDiv);
+            resultsDiv.appendChild(playerDiv);
         } else {
             switch (playerSelection) {
                 case 1:
@@ -126,28 +126,29 @@ function playGame() {
     
 
     function playRound(computerSelection, playerSelection) {
+        console.log(computerSelection,playerSelection);
         displayResult(computerSelection, playerSelection);
 
         if (computerSelection !== playerSelection) {
             switch (computerSelection, playerSelection) {
-                case ((1, 2) || (2, 1)):
-                    if (playerSelection === 2) {
+                case (1, 2) || (2, 1):
+                    if (playerSelection === 2 && computerSelection === 1) {
                         scoreCounter(true);
                     } else {
                         scoreCounter(false);
                     }
                     break;
 
-                case ((2, 3) || (3, 2)):
-                    if (playerSelection === 3) {
+                case (2, 3) || (3, 2):
+                    if (playerSelection === 3 && computerSelection === 2) {
                         scoreCounter(true);
                     } else {
                         scoreCounter(false);
                     }
                     break;
 
-                case ((3, 1) || (1, 3)):
-                    if (playerSelection === 1) {
+                case (3, 1) || (1, 3):
+                    if (playerSelection === 1 && computerSelection === 3) {
                         scoreCounter(true);
                     } else {
                         scoreCounter(false);
@@ -164,27 +165,27 @@ function playGame() {
     const scissorsBtn = document.querySelector('.scissors-btn');
 
     rockBtn.addEventListener('click', () => {
-        let computerSelection = Math.round(Math.random() * 3) + 1;
-        if (computerSelection > 3) {
-            computerSelection = Math.round(computerSelection - 1);
+        let computerSelection = Math.round(Math.random() * 3);
+        if (computerSelection < 1) {
+            computerSelection += 1;
         }
         const playerSelection = 1;
         playRound(computerSelection, playerSelection);
     });
 
     paperBtn.addEventListener('click', () => {
-        let computerSelection = Math.round(Math.random() * 3) + 1;
-        if (computerSelection > 3) {
-            computerSelection = Math.round(computerSelection - 1);
+        let computerSelection = Math.round(Math.random() * 3);
+        if (computerSelection < 1) {
+            computerSelection += 1;
         }
         const playerSelection = 2;
         playRound(computerSelection, playerSelection);
     });
 
     scissorsBtn.addEventListener('click', () => {
-        let computerSelection = Math.round(Math.random() * 3) + 1;
-        if (computerSelection > 3) {
-            computerSelection = Math.round(computerSelection - 1);
+        let computerSelection = Math.round(Math.random() * 3);
+        if (computerSelection < 1) {
+            computerSelection += 1;
         }
         const playerSelection = 3;
         playRound(computerSelection, playerSelection);

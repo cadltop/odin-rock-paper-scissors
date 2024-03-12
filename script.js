@@ -1,13 +1,13 @@
 function playGame() {
 
     function displayResult(computerSelection, playerSelection) {
-        const resultsDiv = document.querySelector('.results');
+        const resultsDiv = document.querySelector('.result');
         const playerDiv = document.createElement('div');
         playerDiv.classList.add('player-r');
         const computerDiv = document.createElement('div');
         computerDiv.classList.add('computer-r');
 
-        if (document.querySelector('.results-txt').nextElementSibling === null) {
+        if (document.querySelector('.result').hasChildNodes() === false) {
             
             switch (playerSelection) {
                 case 1:
@@ -64,13 +64,13 @@ function playGame() {
 
     let playerCounter = 0, computerCounter = 0;
     function scoreCounter(userWon) {
-        const scoreDiv = document.querySelector('.score');
+        const scoreDiv = document.querySelector('.scores');
         const playerDiv = document.createElement('div');
         playerDiv.classList.add('player-s');
         const computerDiv = document.createElement('div');
         computerDiv.classList.add('computer-s');
 
-        if (document.querySelector('.score-txt').nextElementSibling === null) {
+        if (document.querySelector('.scores').hasChildNodes() === false) {
             switch (userWon) {
                 case true:
                     playerCounter += 1;
@@ -104,8 +104,8 @@ function playGame() {
         
             document.querySelector('.computer-s').innerHTML = computerCounter.toString();
             document.querySelector('.player-s').innerHTML = playerCounter.toString();
-            const messageP = document.querySelector('.message');
 
+            const messageP = document.querySelector('.message');
             messageP.textContent = '';
             
             if (playerCounter === 5) {

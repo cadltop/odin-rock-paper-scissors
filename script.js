@@ -3,11 +3,12 @@ function playGame() {
     function displayResult(computerSelection, playerSelection) {
         const resultsDiv = document.querySelector('.results');
         const playerDiv = document.createElement('div');
-        playerDiv.classList.add('player');
+        playerDiv.classList.add('player-r');
         const computerDiv = document.createElement('div');
-        computerDiv.classList.add('computer');
+        computerDiv.classList.add('computer-r');
 
         if (document.querySelector('.results-txt').nextElementSibling === null) {
+            
             switch (playerSelection) {
                 case 1:
                     playerDiv.textContent = 'Rock';
@@ -37,73 +38,108 @@ function playGame() {
         } else {
             switch (playerSelection) {
                 case 1:
-                    document.querySelector('.player').innerHTML = 'Rock';
+                    document.querySelector('.player-r').innerHTML = 'Rock';
                     break;
                 case 2:
-                    document.querySelector('.player').innerHTML = 'Paper';
+                    document.querySelector('.player-r').innerHTML = 'Paper';
                     break;
                 case 3:
-                    document.querySelector('.player').innerHTML = 'Scissors';
+                    document.querySelector('.player-r').innerHTML = 'Scissors';
                     break;
             }
     
             switch (computerSelection) {
                 case 1:
-                    document.querySelector('.computer').innerHTML = 'Rock';
+                    document.querySelector('.computer-r').innerHTML = 'Rock';
                     break;
                 case 2:
-                    document.querySelector('.computer').innerHTML = 'Paper';
+                    document.querySelector('.computer-r').innerHTML = 'Paper';
                     break;
                 case 3:
-                    document.querySelector('.computer').innerHTML = 'Scissors';
+                    document.querySelector('.computer-r').innerHTML = 'Scissors';
                     break;
             }
         }
     }
+
+    let playerCounter = 0, computerCounter = 0;
+    function scoreCounter(userWon) {
+        const scoreDiv = document.querySelector('.score');
+        const playerDiv = document.createElement('div');
+        playerDiv.classList.add('player-s');
+        const computerDiv = document.createElement('div');
+        computerDiv.classList.add('computer-s');
+
+        if (document.querySelector('.score-txt').nextElementSibling === null) {
+            switch (userWon) {
+                case true:
+                    playerCounter += 1;
+                    break;
+                case false:
+                    computerCounter += 1;
+                    break;
+                case null:
+                    playerCounter += 1;
+                    computerCounter += 1;
+                    break;
+            }
+
+            playerDiv.textContent = playerCounter.toString();
+            computerDiv.textContent = computerCounter.toString();
+            scoreDiv.appendChild(playerDiv);
+            scoreDiv.appendChild(computerDiv);
+        } else {
+            switch (userWon) {
+                case true:
+                    playerCounter += 1;
+                    break;
+                case false:
+                    computerCounter += 1;
+                    break;
+                case null:
+                    playerCounter += 1;
+                    computerCounter += 1;
+                    break;
+            }
+        
+            document.querySelector('.player-s').innerHTML = playerCounter.toString();
+            document.querySelector('.computer-s').innerHTML = computerCounter.toString();
+        }
+    }
     
+
     function playRound(computerSelection, playerSelection) {
-        let result = null;
+        displayResult(computerSelection, playerSelection);
 
         if (computerSelection !== playerSelection) {
             switch (computerSelection, playerSelection) {
                 case ((1, 2) || (2, 1)):
-                    result = "Paper beats Rock";
-    
                     if (playerSelection === 2) {
-                        result = "You Win! " + result;
+                        scoreCounter(true);
                     } else {
-                        result = "You Lose! " + result;
+                        scoreCounter(false);
                     }
+                    break;
 
-                    displayResult(computerSelection, playerSelection);
-                    break;
                 case ((2, 3) || (3, 2)):
-                    result = "Scissors beats Paper"
-    
                     if (playerSelection === 3) {
-                        result = "You Win! " + result;
+                        scoreCounter(true);
                     } else {
-                        result = "You Lose! " + result;
+                        scoreCounter(false);
                     }
-                    
-                    displayResult(computerSelection, playerSelection);
                     break;
+
                 case ((3, 1) || (1, 3)):
-                    result = "Rock beats Scissors";
-    
                     if (playerSelection === 1) {
-                        result = "You Win! " + result;
+                        scoreCounter(true);
                     } else {
-                        result = "You Lose! " + result;
+                        scoreCounter(false);
                     }
-                    
-                    displayResult(computerSelection, playerSelection);
                     break;
             }
         } else {
-            displayResult(computerSelection, playerSelection);
+            scoreCounter(null);
         }
-
     }
 
     const rockBtn = document.querySelector('.rock-btn');
@@ -111,7 +147,7 @@ function playGame() {
     const scissorsBtn = document.querySelector('.scissors-btn');
 
     rockBtn.addEventListener('click', () => {
-        const computerSelection = Math.round(Math.random() * 3 + 1);
+        const computerSelection = Math.round(Math.random() * 3 ) + 1;
         const playerSelection = 1;
         playRound(computerSelection, playerSelection);
     });

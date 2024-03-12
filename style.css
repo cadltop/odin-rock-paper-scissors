@@ -1,3 +1,81 @@
 body {
     background-color:rgb(209, 255, 102);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+h1, h2, .buttons {
+    display: block;
+    text-align: center;
+}
+
+h1 {
+    margin: 50px;
+    background-color: seagreen;
+    padding: 15px;
+    color: white;
+}
+
+.buttons > button {
+    background-color: rgb(180, 66, 0);
+    color: white;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px 5px;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin: 30px;
+    gap: 50px;
+}
+
+.scores, .results {
+    background-color: orange;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.results-txt, .score-txt {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.score-fields, .result-fields {
+    display: flex;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    background-color: white;
+    border-style: solid;    
+    justify-content: center;
+}
+
+.player-r, .computer-r, .player-s, .computer-s {
+    padding: 5px;
+}
+
+.player-r, .player-s {
+    border-left: 1px solid grey;
+}
+
+.message {
+    background-color: white;
+    text-align: center;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+
+
